@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE = 1
+#export PYBUILD_VERBOSE = 1
+export PYBUILD_NAME = pyparsing
+
+%:
+	dh $@ --with=python3,pypy,sphinxdoc --buildsystem=pybuild
+
+override_dh_auto_build-indep:
+	dh_auto_build
+	PYTHONPATH=`pybuild --print {build_dir}` http_proxy='127.0.0.1:9' make -C docs html # HTML generator
+
+override_dh_installexamples:
+	dh_installexamples -i -ppython-pyparsing-doc -X.pyc -X__pycache__
+
+override_dh_compress:
+	dh_compress -i -X.py

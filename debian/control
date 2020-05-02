@@ -1,0 +1,96 @@
+Source: pyparsing
+Section: python
+Priority: optional
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders:
+ Matthew Grant <matt@mattgrant.net.nz>,
+ Barry Warsaw <barry@debian.org>,
+ Thomas Goirand <zigo@debian.org>,
+Build-Depends:
+ debhelper-compat (= 12),
+ dh-python,
+ pypy,
+ pypy-setuptools,
+ python3-all,
+ python3-setuptools,
+ python3-sphinx
+Build-Depends-Indep:
+ tofrodos,
+Homepage: https://github.com/pyparsing/pyparsing/
+Rules-Requires-Root: no
+Vcs-Git: https://salsa.debian.org/python-team/modules/pyparsing.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/pyparsing
+Standards-Version: 4.5.0
+
+Package: pypy-pyparsing
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${pypy:Depends},
+Provides:
+ ${pypy:Provides},
+Suggests:
+ python-pyparsing-doc,
+Description: alternative to creating and executing simple grammars - pypy
+ The parsing module is an alternative approach to creating and
+ executing simple grammars, vs. the traditional lex/yacc approach, or
+ the use of regular expressions.  The parsing module provides a
+ library of classes that client code uses to construct the grammar
+ directly in Python code.
+ .
+ Here's an example:
+ .
+  from pyparsing import Word, alphas
+  greet = Word(alphas) + "," + Word(alphas) + "!"
+  hello = "Hello, World!"
+  print hello, "->", greet.parseString(hello)
+ .
+ This package contains the PyPy version of python-pyparsing.
+
+Package: python-pyparsing-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends:
+ ${misc:Depends},
+ ${sphinxdoc:Depends}
+Description: alternative to creating and executing simple grammars - doc
+ The parsing module is an alternative approach to creating and
+ executing simple grammars, vs. the traditional lex/yacc approach, or
+ the use of regular expressions.  The parsing module provides a
+ library of classes that client code uses to construct the grammar
+ directly in Python code.
+ .
+ Here's an example:
+ .
+  from pyparsing import Word, alphas
+  greet = Word(alphas) + "," + Word(alphas) + "!"
+  hello = "Hello, World!"
+  print hello, "->", greet.parseString(hello)
+ .
+ This package contains documentation for python-pyparsing.
+
+Package: python3-pyparsing
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+Provides:
+ ${python3:Provides},
+Suggests:
+ python-pyparsing-doc,
+Description: alternative to creating and executing simple grammars - Python 3.x
+ The parsing module is an alternative approach to creating and
+ executing simple grammars, vs. the traditional lex/yacc approach, or
+ the use of regular expressions.  The parsing module provides a
+ library of classes that client code uses to construct the grammar
+ directly in Python code.
+ .
+ Here's an example:
+ .
+  from pyparsing import Word, alphas
+  greet = Word(alphas) + "," + Word(alphas) + "!"
+  hello = "Hello, World!"
+  print hello, "->", greet.parseString(hello)
+ .
+ This package contains the Python 3.x version of python-pyparsing.

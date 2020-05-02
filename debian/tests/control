@@ -1,0 +1,5 @@
+Test-Command: python3 unitTests.py;
+ pytest-3 -v
+Depends: python3-pyparsing,
+ python3-pytest
+Restrictions: allow-stderr
